@@ -1,0 +1,26 @@
+{
+  "name": "ParticalSimulator",
+  "version": "1.0.0",
+  "description": "N-Body partical simulator using quadtrees.",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-concurrent": "^1.0.0",
+    "grunt-contrib-jade": "^0.12.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-typescript": "^0.3.8"
+  },
+  "dependencies": {},
+  "scripts": {},
+  "keywords": [
+    "particle",
+    "n-body",
+    "simulator",
+    "quadtree"
+  ],
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/Kelvin-Chen/Partical-Simulator.git"
+  },
+  "author": "Kelvin Chen"
+}
