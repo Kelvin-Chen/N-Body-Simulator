@@ -5,14 +5,10 @@ module Stage {
         static count: number = 0;
         context: CanvasRenderingContext2D;
         bodies: BarnesHut.Body[];
-        quadrant: BarnesHut.Quadrant;
         quadtree: BarnesHut.Quadtree;
 
         constructor(public width: number, public height: number) {
             this.bodies = [];
-            this.quadrant = new BarnesHut.Quadrant(
-                new BarnesHut.Point(this.width / 2, this.height / 2),
-                                    this.width, this.height);
 
             var canvas = document.createElement('canvas');
             canvas.id = "stage" + Stage.count++;
@@ -31,7 +27,27 @@ module Stage {
         }
 
         update(): void {
-            this.quadtree = new BarnesHut.Quadtree(this.quadrant);
+            var maxx: number;
+            var maxy: number;
+            var minx: number;
+            var miny: number;
+
+            this.bodies.forEach((body: BarnesHut.Body) => {
+                maxx = Math.max(maxx, body.location.x) || body.location.x;
+                maxy = Math.max(maxy, body.location.y) || body.location.y;
+                minx = Math.min(minx, body.location.x) || body.location.x;
+                miny = Math.min(miny, body.location.y) || body.location.y;
+            });
+
+            var dx = maxx - minx;
+            var dy = maxy - miny;
+            var center = new BarnesHut.Point(minx + dx / 2, miny + dy / 2);
+
+            var quadrant = new BarnesHut.Quadrant(center, dx, dy);
+            console.log(quadrant);
+
+            this.quadtree = new BarnesHut.Quadtree(quadrant);
+
             this.bodies.forEach(this.quadtree.insert);
             this.bodies.forEach((body: BarnesHut.Body) => {
                 body.resetForce();
