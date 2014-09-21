@@ -44,7 +44,6 @@ module Stage {
             var center = new BarnesHut.Point(minx + dx / 2, miny + dy / 2);
 
             var quadrant = new BarnesHut.Quadrant(center, dx, dy);
-            console.log(quadrant);
 
             this.quadtree = new BarnesHut.Quadtree(quadrant);
 
