@@ -27,6 +27,16 @@ module Main {
             case 't':
                 stage.renderTree = !stage.renderTree;
                 break;
+            // Create a circular pattern
+            case 'c':
+                for (var theta = 0; theta <= 2 * Math.PI; theta += 2 * Math.PI / 50) {
+                    var x = stage.width / 2 + Math.cos(theta) * 300;
+                    var y = stage.height / 2 + Math.sin(theta) * 300;
+                    stage.bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 5));
+                }
+                break;
+            default:
+                console.log(e.which);
         }
     }
 
