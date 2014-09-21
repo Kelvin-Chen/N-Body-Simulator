@@ -18,11 +18,16 @@ module BarnesHut {
         velocity: Vector;
         static G = 6.673e-11;
         static EPS = 1e5;
+        static DENSITY = 2 / (5 * Math.PI);
 
         constructor(public location: Point, public mass?: number) {
             this.force = { x: 0, y: 0 };
             this.velocity = { x: 0, y: 0 };
             this.mass = mass || 10;
+        }
+
+        radius(): number {
+            return Math.sqrt(this.mass / Body.DENSITY / Math.PI);
         }
 
         distanceTo(other: Body): number {
@@ -81,9 +86,8 @@ module BarnesHut {
 
         render = (context: CanvasRenderingContext2D): void => {
             context.beginPath();
-            // Set default radius to 10
             context.arc(this.location.x, this.location.y,
-                        10, 0, 2 * Math.PI, false);
+                        this.radius(), 0, 2 * Math.PI, false);
             context.fillStyle = 'grey';
             context.fill();
         }
