@@ -130,6 +130,14 @@ module BarnesHut {
                                    this.center.y - height / 2);
             return new Quadrant(center, width, height);
         }
+
+        render = (context: CanvasRenderingContext2D): void => {
+            context.strokeStyle = 'blue';
+            context.lineWidth = 1;
+            context.strokeRect(this.center.x - this.width / 2,
+                               this.center.y - this.height / 2,
+                               this.width, this.height);
+        }
     }
 
     export class Quadtree {
@@ -215,6 +223,17 @@ module BarnesHut {
                 if (this.topRight) this.topRight.updateForce(body);
                 if (this.bottomLeft) this.bottomLeft.updateForce(body);
                 if (this.bottomRight) this.bottomRight.updateForce(body);
+            }
+        }
+
+        render = (context: CanvasRenderingContext2D): void  => {
+            if (this.isExternal()) {
+                this.quadrant.render(context);
+            } else {
+                if (this.topLeft) this.topLeft.render(context);
+                if (this.topRight) this.topRight.render(context);
+                if (this.bottomLeft) this.bottomLeft.render(context);
+                if (this.bottomRight) this.bottomRight.render(context);
             }
         }
     }
