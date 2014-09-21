@@ -94,17 +94,14 @@ module BarnesHut {
     }
 
     export class Quadrant {
-        // Set a margin to prevent too much quadrants from being created
-        static MARGIN = 0.5;
-
         constructor(public center: Point, public width: number,
                     public height: number) {}
 
         contains(body: Body): boolean {
-            var upperBound = this.center.y + this.height / 2 + Quadrant.MARGIN;
-            var lowerBound = this.center.y - this.height / 2 - Quadrant.MARGIN;
-            var rightBound = this.center.x + this.width / 2 + Quadrant.MARGIN;
-            var leftBound = this.center.x - this.width / 2 - Quadrant.MARGIN;
+            var upperBound = this.center.y + this.height / 2;
+            var lowerBound = this.center.y - this.height / 2;
+            var rightBound = this.center.x + this.width / 2;
+            var leftBound = this.center.x - this.width / 2;
 
             return leftBound <= body.location.x && body.location.x <= rightBound
                    && lowerBound <= body.location.y && body.location.y <= upperBound;
@@ -162,7 +159,7 @@ module BarnesHut {
         // Threshold that the ratio of the width of each node in the tree
         // and the distance between a body and the quadrant's center of mass
         // must be less than
-        static THETA = 0.5
+        static THETA = 0.5;
 
         constructor(public quadrant: Quadrant) {}
 
