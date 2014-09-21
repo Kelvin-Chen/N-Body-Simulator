@@ -1,7 +1,7 @@
 {
-  "name": "ParticalSimulator",
+  "name": "N-Body-Simulator",
   "version": "1.0.0",
-  "description": "N-Body partical simulator using quadtrees.",
+  "description": "N-Body simulator using the Barnes-Hut algorithm.",
   "main": "Gruntfile.js",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -13,14 +13,14 @@
   "dependencies": {},
   "scripts": {},
   "keywords": [
-    "particle",
+    "barnes-hut",
     "n-body",
     "simulator",
     "quadtree"
   ],
   "repository": {
       "type": "git",
-      "url": "https://github.com/Kelvin-Chen/Partical-Simulator.git"
+      "url": "https://github.com/Kelvin-Chen/N-Body-Simulator.git"
   },
   "author": "Kelvin Chen"
 }
