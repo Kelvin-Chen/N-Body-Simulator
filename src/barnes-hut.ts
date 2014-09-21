@@ -235,14 +235,11 @@ module BarnesHut {
         }
 
         render = (context: CanvasRenderingContext2D): void  => {
-            if (this.isExternal()) {
-                this.quadrant.render(context);
-            } else {
-                if (this.topLeft) this.topLeft.render(context);
-                if (this.topRight) this.topRight.render(context);
-                if (this.bottomLeft) this.bottomLeft.render(context);
-                if (this.bottomRight) this.bottomRight.render(context);
-            }
+            if (this.topLeft) this.topLeft.render(context);
+            if (this.topRight) this.topRight.render(context);
+            if (this.bottomLeft) this.bottomLeft.render(context);
+            if (this.bottomRight) this.bottomRight.render(context);
+            this.quadrant.render(context);
         }
     }
 }
