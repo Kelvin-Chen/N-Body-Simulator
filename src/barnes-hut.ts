@@ -70,6 +70,15 @@ module BarnesHut {
                    && this.location.y === other.location.y
                    && this.mass === other.mass;
         }
+
+        render = (context: CanvasRenderingContext2D): void => {
+            context.beginPath();
+            // Set default radius to 10
+            context.arc(this.location.x, this.location.y,
+                                10, 0, 2 * Math.PI, false);
+            context.fillStyle = 'grey';
+            context.fill();
+        }
     }
 
     export class Quadrant {
