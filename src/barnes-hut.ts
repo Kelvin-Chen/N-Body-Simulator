@@ -29,13 +29,13 @@ module BarnesHut {
         }
 
         // Combine two bodies at the center of mass
-        add(other: Body): void {
+        add(other: Body): Body {
             var m = this.mass + other.mass;
-            var x = (this.location.x * this.mass + other.location.x * other.mass) / m;
-            var y = (this.location.y * this.mass + other.location.y * other.mass) / m;
-            this.location.x = x;
-            this.location.y = y;
-            this.mass = m;
+            var x = (this.location.x * this.mass
+                     + other.location.x * other.mass) / m;
+            var y = (this.location.y * this.mass
+                     + other.location.y * other.mass) / m;
+            return new Body(new Point(x, y), m);
         }
 
         addForce(other: Body): void {
@@ -167,7 +167,7 @@ module BarnesHut {
                 this.insert(body);
             } else {
                 // Combine the center of mass with new body
-                this.centerOfMass.add(body);
+                this.centerOfMass = this.centerOfMass.add(body);
 
                 // Find sub-quadtree the body should go into
                 // Create new quadtrees as necessary
