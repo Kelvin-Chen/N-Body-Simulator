@@ -18,9 +18,10 @@ module BarnesHut {
         velocity: Vector;
         static G = 6.673e-11;
 
-        constructor(public location: Point, public mass: number) {
+        constructor(public location: Point, public mass?: number) {
             this.force = { x: 0, y: 0 };
             this.velocity = { x: 0, y: 0 };
+            this.mass = mass || 10;
         }
 
         distanceTo(other: Body): number {
