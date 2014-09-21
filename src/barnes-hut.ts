@@ -174,7 +174,7 @@ module BarnesHut {
                 } else if (this.quadrant.topRight().contains(this.centerOfMass)) {
                     this.topRight = new Quadtree(this.quadrant.topRight());
                     this.topRight.insert(this.centerOfMass);
-                } if (this.quadrant.bottomLeft().contains(this.centerOfMass)) {
+                } else if (this.quadrant.bottomLeft().contains(this.centerOfMass)) {
                     this.bottomLeft = new Quadtree(this.quadrant.bottomLeft());
                     this.bottomLeft.insert(this.centerOfMass);
                 } else {
