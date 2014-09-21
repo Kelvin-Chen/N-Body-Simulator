@@ -17,6 +17,7 @@ module BarnesHut {
         force: Vector;
         velocity: Vector;
         static G = 6.673e-11;
+        static EPS = 1e5;
 
         constructor(public location: Point, public mass?: number) {
             this.force = { x: 0, y: 0 };
@@ -44,7 +45,11 @@ module BarnesHut {
             var distance = this.distanceTo(other);
 
             // Law of universal gravitation F = GMm/r^2
-            var force = Body.G * this.mass * other.mass / (distance * distance);
+            // Add softening constant EPS to distance
+            // This prevents the force from getting too
+            // big as the distance approaches 0
+            var force = Body.G * this.mass * other.mass
+                        / (distance * distance + Body.EPS * Body.EPS);
 
             this.force.x += force * dx / distance;
             this.force.y += force * dy / distance;
