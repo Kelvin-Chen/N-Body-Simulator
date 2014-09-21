@@ -7,10 +7,12 @@ module Stage {
         bodies: BarnesHut.Body[];
         quadtree: BarnesHut.Quadtree;
         renderTree: boolean;
+        DT: number;
 
         constructor(public width: number, public height: number) {
             this.bodies = [];
             this.renderTree = false;
+            this.DT = 1e8;
 
             var canvas = document.createElement('canvas');
             canvas.id = "stage" + Stage.count++;
@@ -53,7 +55,7 @@ module Stage {
             this.bodies.forEach((body: BarnesHut.Body) => {
                 body.resetForce();
                 this.quadtree.updateForce(body);
-                body.update(1e9);
+                body.update(this.DT);
             });
         }
 

@@ -35,6 +35,12 @@ module Main {
                     stage.bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 5));
                 }
                 break;
+            case '[':
+                stage.DT /= 10;
+                break;
+            case ']':
+                stage.DT *= 10;
+                break;
             default:
                 console.log(e.which);
         }
