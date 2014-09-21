@@ -56,13 +56,16 @@ module BarnesHut {
         }
 
         // Update velocity/position for each frame
-        update(): void {
-            // Add acceleration (F/M) to velocity
-            this.velocity.x += this.force.x / this.mass;
-            this.velocity.y += this.force.y / this.mass;
+        update(DT?: number): void {
+            // Add delta-time variable to change time step for each frame
+            DT = DT || 1;
 
-            this.location.x += this.velocity.x;
-            this.location.y += this.velocity.y;
+            // Add acceleration (F/M) to velocity
+            this.velocity.x += this.force.x / this.mass * DT;
+            this.velocity.y += this.force.y / this.mass * DT;
+
+            this.location.x += this.velocity.x * DT;
+            this.location.y += this.velocity.y * DT;
         }
 
         equals(other: Body): boolean {
