@@ -144,7 +144,7 @@ module BarnesHut {
         }
 
         // Recursively insert a body into the tree
-        insert(body: Body): void {
+        insert = (body: Body): void => {
             if (!this.centerOfMass) {
                 this.centerOfMass = body;
             } else if (this.isExternal()) {
