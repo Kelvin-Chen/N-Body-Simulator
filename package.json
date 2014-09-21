@@ -8,6 +8,7 @@
     "grunt-concurrent": "^1.0.0",
     "grunt-contrib-jade": "^0.12.0",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-gh-pages": "^0.9.1",
     "grunt-typescript": "^0.3.8"
   },
   "dependencies": {},
@@ -19,8 +20,8 @@
     "quadtree"
   ],
   "repository": {
-      "type": "git",
-      "url": "https://github.com/Kelvin-Chen/N-Body-Simulator.git"
+    "type": "git",
+    "url": "https://github.com/Kelvin-Chen/N-Body-Simulator.git"
   },
   "author": "Kelvin Chen"
 }

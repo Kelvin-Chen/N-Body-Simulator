@@ -32,6 +32,14 @@ module.exports = function (grunt) {
                 files: 'index.jade',
                 tasks: 'jade:build'
             }
+        },
+        'gh-pages': {
+            options: {
+                base: 'build',
+            },
+            createPage: {
+                src: '*'
+            }
         }
     });
 
@@ -39,7 +47,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-gh-pages');
 
-    grunt.registerTask('build', ['concurrent:build']);
+    grunt.registerTask('build', ['concurrent:build', 'gh-pages']);
     grunt.registerTask('dev', ['concurrent:build', 'watch']);
 };
