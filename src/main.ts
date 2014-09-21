@@ -24,6 +24,9 @@ module Main {
             case ' ':
                 run = !run;
                 break;
+            case 't':
+                stage.renderTree = !stage.renderTree;
+                break;
         }
     }
 

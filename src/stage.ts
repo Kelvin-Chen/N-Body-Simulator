@@ -6,9 +6,11 @@ module Stage {
         context: CanvasRenderingContext2D;
         bodies: BarnesHut.Body[];
         quadtree: BarnesHut.Quadtree;
+        renderTree: boolean;
 
         constructor(public width: number, public height: number) {
             this.bodies = [];
+            this.renderTree = false;
 
             var canvas = document.createElement('canvas');
             canvas.id = "stage" + Stage.count++;
@@ -64,7 +66,7 @@ module Stage {
             });
 
             // Render trees
-            if (this.quadtree)
+            if (this.renderTree && this.quadtree)
                 this.quadtree.render(this.context);
         }
 
