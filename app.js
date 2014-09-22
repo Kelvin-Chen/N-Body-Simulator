@@ -323,6 +323,19 @@ var Pattern;
         return bodies;
     }
     Pattern.square = square;
+
+    function spiral(width, height) {
+        var bodies = [];
+        var theta = 0;
+        for (var i = 1; i <= 750; ++i) {
+            var x = width / 2 + Math.cos(theta) * i / 2;
+            var y = height / 2 + Math.sin(theta) * i / 2;
+            bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
+            theta += 1.618033988749894848;
+        }
+        return bodies;
+    }
+    Pattern.spiral = spiral;
 })(Pattern || (Pattern = {}));
 var Main;
 (function (Main) {
@@ -357,8 +370,13 @@ var Main;
             case 'e':
                 stage.bodies = stage.bodies.concat(Pattern.ellipse(stage.width, stage.height));
                 break;
+
             case 's':
                 stage.bodies = stage.bodies.concat(Pattern.square(stage.width, stage.height));
+                break;
+
+            case 'S':
+                stage.bodies = stage.bodies.concat(Pattern.spiral(stage.width, stage.height));
                 break;
             case 'r':
                 stage.bodies = [];
