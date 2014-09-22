@@ -32,4 +32,16 @@ module Pattern {
         }
         return bodies;
     }
+
+    export function spiral(width: number, height: number): BarnesHut.Body[] {
+        var bodies: BarnesHut.Body[] = [];
+        var theta = 0;
+        for (var i = 1; i <= 750; ++i) {
+            var x = width / 2 + Math.cos(theta) * i / 2;
+            var y = height / 2 + Math.sin(theta) * i / 2;
+            bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
+            theta += 1.618033988749894848;
+        }
+        return bodies;
+    }
 }
