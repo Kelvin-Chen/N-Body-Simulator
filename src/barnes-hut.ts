@@ -84,11 +84,11 @@ module BarnesHut {
                    && this.mass === other.mass;
         }
 
-        render = (context: CanvasRenderingContext2D): void => {
+        render = (context: CanvasRenderingContext2D, color?: string): void => {
+            context.fillStyle = color || '#03a9f4';
             context.beginPath();
             context.arc(this.location.x, this.location.y,
                         this.radius(), 0, 2 * Math.PI, false);
-            context.fillStyle = 'grey';
             context.fill();
         }
     }
@@ -141,7 +141,7 @@ module BarnesHut {
         }
 
         render = (context: CanvasRenderingContext2D): void => {
-            context.strokeStyle = 'blue';
+            context.strokeStyle = '#dd2c00';
             context.lineWidth = 1;
             context.strokeRect(this.center.x - this.width / 2,
                                this.center.y - this.height / 2,
