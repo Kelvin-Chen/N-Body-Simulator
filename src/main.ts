@@ -1,5 +1,5 @@
 /// <reference path='stage.ts' />
-/// <reference path='barnes-hut.ts' />
+/// <reference path='pattern.ts' />
 
 module Main {
     var run: boolean;
@@ -29,19 +29,13 @@ module Main {
                 break;
             // Create a circular pattern
             case 'c':
-                for (var theta = 0; theta < 2 * Math.PI; theta += 2 * Math.PI / 500) {
-                    var x = stage.width / 2 + Math.cos(theta) * stage.height / 2;
-                    var y = stage.height / 2 + Math.sin(theta) * stage.height / 2;
-                    stage.bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
-                }
+                stage.bodies = stage.bodies.concat(
+                    Pattern.circle(stage.width, stage.height));
                 break;
             // Create ellipse
             case 'e':
-                for (var theta = 0; theta < 2 * Math.PI; theta += 2 * Math.PI / 500) {
-                    var x = stage.width / 2 + Math.cos(theta) * stage.width / 2;
-                    var y = stage.height / 2 + Math.sin(theta) * stage.height / 2;
-                    stage.bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
-                }
+                stage.bodies = stage.bodies.concat(
+                    Pattern.ellipse(stage.width, stage.height));
                 break;
             case '[':
                 stage.DT /= 10;
