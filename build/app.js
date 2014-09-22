@@ -314,10 +314,18 @@ var Main;
                 break;
 
             case 'c':
-                for (var theta = 0; theta <= 2 * Math.PI; theta += 2 * Math.PI / 50) {
-                    var x = stage.width / 2 + Math.cos(theta) * 300;
-                    var y = stage.height / 2 + Math.sin(theta) * 300;
-                    stage.bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 5));
+                for (var theta = 0; theta < 2 * Math.PI; theta += 2 * Math.PI / 500) {
+                    var x = stage.width / 2 + Math.cos(theta) * stage.height / 2;
+                    var y = stage.height / 2 + Math.sin(theta) * stage.height / 2;
+                    stage.bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
+                }
+                break;
+
+            case 'e':
+                for (var theta = 0; theta < 2 * Math.PI; theta += 2 * Math.PI / 500) {
+                    var x = stage.width / 2 + Math.cos(theta) * stage.width / 2;
+                    var y = stage.height / 2 + Math.sin(theta) * stage.height / 2;
+                    stage.bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
                 }
                 break;
             case '[':
