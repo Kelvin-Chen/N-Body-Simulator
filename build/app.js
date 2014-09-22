@@ -287,6 +287,43 @@ var Stage;
     })();
     _Stage.Stage = Stage;
 })(Stage || (Stage = {}));
+var Pattern;
+(function (Pattern) {
+    function ellipse(width, height) {
+        var bodies = [];
+        for (var theta = 0; theta < 2 * Math.PI; theta += 2 * Math.PI / 500) {
+            var x = width / 2 + Math.cos(theta) * width / 2;
+            var y = height / 2 + Math.sin(theta) * height / 2;
+            bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
+        }
+        return bodies;
+    }
+    Pattern.ellipse = ellipse;
+
+    function circle(width, height) {
+        var bodies = [];
+        for (var theta = 0; theta < 2 * Math.PI; theta += 2 * Math.PI / 500) {
+            var x = width / 2 + Math.cos(theta) * height / 2;
+            var y = height / 2 + Math.sin(theta) * height / 2;
+            bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
+        }
+        return bodies;
+    }
+    Pattern.circle = circle;
+
+    function square(width, height) {
+        var bodies = [];
+        for (var i = -25; i < 25; ++i) {
+            for (var j = -25; j < 25; ++j) {
+                var x = width / 2 + i * 10;
+                var y = height / 2 + j * 10;
+                bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
+            }
+        }
+        return bodies;
+    }
+    Pattern.square = square;
+})(Pattern || (Pattern = {}));
 var Main;
 (function (Main) {
     var run;
@@ -314,20 +351,17 @@ var Main;
                 break;
 
             case 'c':
-                for (var theta = 0; theta < 2 * Math.PI; theta += 2 * Math.PI / 500) {
-                    var x = stage.width / 2 + Math.cos(theta) * stage.height / 2;
-                    var y = stage.height / 2 + Math.sin(theta) * stage.height / 2;
-                    stage.bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
-                }
+                stage.bodies = stage.bodies.concat(Pattern.circle(stage.width, stage.height));
                 break;
 
             case 'e':
-                for (var theta = 0; theta < 2 * Math.PI; theta += 2 * Math.PI / 500) {
-                    var x = stage.width / 2 + Math.cos(theta) * stage.width / 2;
-                    var y = stage.height / 2 + Math.sin(theta) * stage.height / 2;
-                    stage.bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
-                }
+                stage.bodies = stage.bodies.concat(Pattern.ellipse(stage.width, stage.height));
                 break;
+            case 's':
+                stage.bodies = stage.bodies.concat(Pattern.square(stage.width, stage.height));
+                break;
+            case 'r':
+                stage.bodies = [];
             case '[':
                 stage.DT /= 10;
                 break;
@@ -337,6 +371,7 @@ var Main;
             default:
                 console.log(e.which);
         }
+        console.log(e);
     };
 
     var stage = new Stage.Stage(window.innerWidth, window.innerHeight);

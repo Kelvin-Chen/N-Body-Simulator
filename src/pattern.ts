@@ -20,4 +20,16 @@ module Pattern {
         }
         return bodies;
     }
+
+    export function square(width: number, height: number): BarnesHut.Body[] {
+        var bodies: BarnesHut.Body[] = [];
+        for (var i = -25; i < 25; ++i) {
+            for (var j = -25; j < 25; ++j) {
+                var x = width / 2 + i * 10;
+                var y = height / 2 + j * 10;
+                bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
+            }
+        }
+        return bodies;
+    }
 }

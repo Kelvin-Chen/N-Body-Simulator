@@ -37,6 +37,12 @@ module Main {
                 stage.bodies = stage.bodies.concat(
                     Pattern.ellipse(stage.width, stage.height));
                 break;
+            case 's':
+                stage.bodies = stage.bodies.concat(
+                    Pattern.square(stage.width, stage.height));
+                break;
+            case 'r':
+                stage.bodies = [];
             case '[':
                 stage.DT /= 10;
                 break;
