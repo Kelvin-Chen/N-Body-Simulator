@@ -17,10 +17,10 @@ var BarnesHut;
             var _this = this;
             this.location = location;
             this.mass = mass;
-            this.render = function (context) {
+            this.render = function (context, color) {
+                context.fillStyle = color || '#03a9f4';
                 context.beginPath();
                 context.arc(_this.location.x, _this.location.y, _this.radius(), 0, 2 * Math.PI, false);
-                context.fillStyle = 'grey';
                 context.fill();
             };
             this.force = { x: 0, y: 0 };
@@ -85,7 +85,7 @@ var BarnesHut;
             this.width = width;
             this.height = height;
             this.render = function (context) {
-                context.strokeStyle = 'blue';
+                context.strokeStyle = '#dd2c00';
                 context.lineWidth = 1;
                 context.strokeRect(_this.center.x - _this.width / 2, _this.center.y - _this.height / 2, _this.width, _this.height);
             };
@@ -310,6 +310,19 @@ var Pattern;
         return bodies;
     }
     Pattern.circle = circle;
+
+    function square(width, height) {
+        var bodies = [];
+        for (var i = -25; i < 25; ++i) {
+            for (var j = -25; j < 25; ++j) {
+                var x = width / 2 + i * height / 50;
+                var y = height / 2 + j * height / 50;
+                bodies.push(new BarnesHut.Body(new BarnesHut.Point(x, y), 1));
+            }
+        }
+        return bodies;
+    }
+    Pattern.square = square;
 })(Pattern || (Pattern = {}));
 var Main;
 (function (Main) {
@@ -344,6 +357,11 @@ var Main;
             case 'e':
                 stage.bodies = stage.bodies.concat(Pattern.ellipse(stage.width, stage.height));
                 break;
+            case 's':
+                stage.bodies = stage.bodies.concat(Pattern.square(stage.width, stage.height));
+                break;
+            case 'r':
+                stage.bodies = [];
             case '[':
                 stage.DT /= 10;
                 break;
