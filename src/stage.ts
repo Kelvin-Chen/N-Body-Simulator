@@ -18,6 +18,7 @@ module Stage {
             canvas.id = "stage" + Stage.count++;
             canvas.width = width;
             canvas.height = height;
+            canvas.style['background-color'] = '#3f51b5';
 
             this.context = canvas.getContext('2d');
 

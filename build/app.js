@@ -18,7 +18,7 @@ var BarnesHut;
             this.location = location;
             this.mass = mass;
             this.render = function (context, color) {
-                context.fillStyle = color || '#03a9f4';
+                context.fillStyle = color || '#ff4081';
                 context.beginPath();
                 context.arc(_this.location.x, _this.location.y, _this.radius(), 0, 2 * Math.PI, false);
                 context.fill();
@@ -85,7 +85,7 @@ var BarnesHut;
             this.width = width;
             this.height = height;
             this.render = function (context) {
-                context.strokeStyle = '#dd2c00';
+                context.strokeStyle = '#9fa8da';
                 context.lineWidth = 1;
                 context.strokeRect(_this.center.x - _this.width / 2, _this.center.y - _this.height / 2, _this.width, _this.height);
             };
@@ -228,6 +228,7 @@ var Stage;
             canvas.id = "stage" + Stage.count++;
             canvas.width = width;
             canvas.height = height;
+            canvas.style['background-color'] = '#3f51b5';
 
             this.context = canvas.getContext('2d');
 

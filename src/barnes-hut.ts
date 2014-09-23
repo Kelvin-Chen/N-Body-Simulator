@@ -85,7 +85,7 @@ module BarnesHut {
         }
 
         render = (context: CanvasRenderingContext2D, color?: string): void => {
-            context.fillStyle = color || '#03a9f4';
+            context.fillStyle = color || '#ff4081';
             context.beginPath();
             context.arc(this.location.x, this.location.y,
                         this.radius(), 0, 2 * Math.PI, false);
@@ -141,7 +141,7 @@ module BarnesHut {
         }
 
         render = (context: CanvasRenderingContext2D): void => {
-            context.strokeStyle = '#dd2c00';
+            context.strokeStyle = '#9fa8da';
             context.lineWidth = 1;
             context.strokeRect(this.center.x - this.width / 2,
                                this.center.y - this.height / 2,
