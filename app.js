@@ -341,6 +341,8 @@ var Pattern;
 var Main;
 (function (Main) {
     var run;
+    var lastRun = Date.now();
+    var counter = 0;
 
     function mainLoop() {
         setTimeout(function () {
@@ -350,6 +352,11 @@ var Main;
                 return window.requestAnimationFrame(mainLoop);
 
             stage.update();
+            if (counter++ % 25 == 0) {
+                var time = Date.now() - lastRun;
+                console.log(1000 / (time / 25));
+                lastRun = Date.now();
+            }
 
             window.requestAnimationFrame(mainLoop);
         }, 1000 / 60);
